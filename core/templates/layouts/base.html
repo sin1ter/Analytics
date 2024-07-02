@@ -17,9 +17,17 @@
     {% endblock stylesheets %}
 </head>
 <body>
-       {% block content %}
+    <div class="d-flex">
+        {% include "layouts/sidebar.html" %}
+        <div class="w-100">
+            {% include "layouts/header.html" %}
+            
+            {% block content %}
        
-       {% endblock content %}
+            {% endblock content %}
+        </div>
+    </div>
+
 </body>
 
     {% block scripts %}

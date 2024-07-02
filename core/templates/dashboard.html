@@ -1,55 +1,65 @@
 {% extends "layouts/base.html" %}
 
+{% load static %}
+
 {% block content %}
-
+    
+<div class="my-3 mx-3">
+    <h1> Dashboard </h1>
     <div class="d-flex">
-        {% include "layouts/sidebar.html" %}
-        <div class="w-100">
-            {% include "layouts/header.html" %}
-            <div class="my-3 mx-3">
-                <h1> Dashboard </h1>
-
-                <div class="d-flex">
-
-
-                    <div class="col-3 card mx-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Total Users</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Yearly</h6> 
-                            <div>
-                                <canvas id="total-views"> </canvas>
-                            </div>
-                            <h1 class="card-text text-end"> 5,000,000 </h1> 
-                        </div>                  
-                    </div>
-
-                    <div class="col-3 card mx-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Revenue</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Annual</h6> 
-                            <div>
-                                <canvas id="total-views"> </canvas>
-                            </div>
-                            <h1 class="card-text text-end"> 1008 </h1> 
-                        </div>                  
-                    </div>
-
-                    <div class="col-3 card mx-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Grouwth Rate</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Yearly</h6> 
-                            <div>
-                                <canvas id="total-views"> </canvas>
-                            </div>
-                            <h1 class="card-text text-end text-success"> 75% </h1> 
-                        </div>                  
-                    </div>
+        <div class="col-3 card mx-3">
+            <div class="card-body">
+                <h5 class="card-title">Total Users</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Yearly</h6> 
+                <div>
+                    <canvas id="total-views-chart"></canvas>
                 </div>
-
-            </div>
-
-            </div>
-        </div>    
+                <h1 class="card-text text-end"> 5,000,000 </h1> 
+            </div>                  
+        </div>
+        <div class="col-3 card mx-3">
+            <div class="card-body">
+                <h5 class="card-title">Revenue</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Annual</h6> 
+                <div>
+                    <canvas id="revenue-chart"></canvas>
+                </div>
+                <h1 class="card-text text-end"> 1008 </h1> 
+            </div>                  
+        </div>
+        <div class="col-3 card mx-3 h-25">
+            <div class="card-body">
+                <h5 class="card-title">Growth Rate</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Yearly</h6> 
+                <h1 class="card-text text-end text-success"> 75% </h1> 
+            </div>                  
+        </div>
     </div>
 
+    <div class="mx-3 my-5">
+        <h3 class="text-center">Subscriber Count</h3>
+        <div class="bg-secondary bg-opacity-25 p-3 rounded">
+            <canvas id="subscriber-count" style="width: 60%; height: auto;"></canvas>
+        </div>
+    </div>
+
+    <div class="d-flex">
+        <div> 
+            <div class="card mx-3 p-3">
+                <h6 class="text-center"> Traffic Sources </h6>
+                <canvas id="traffic-sources"></canvas>
+            </div>
+        </div>
+        <div class="col-lg-8"> 
+            <h3 class="text-center"> Data </h3>
+            <table id="datatable"> </table>
+        </div>
+        
+    </div>
+
+</div>
 {% endblock content %}
+
+{% block scripts %}
+ <script src="{% static '/assets/js/index.js' %}"> </script>
+{% endblock scripts %}
